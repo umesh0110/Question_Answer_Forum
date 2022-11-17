@@ -1,0 +1,23 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: add-question-service
+  name: add-question-service
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: add-question-service
+  template:
+    metadata:
+      labels:
+        run: add-question-service
+    spec:
+      containers:
+      - name: add-question-service
+        image: umesh0110/question-service:V8
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
